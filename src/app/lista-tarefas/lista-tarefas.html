@@ -1,0 +1,19 @@
+<h3>Lista de tarefa</h3>
+
+@if (livros.length === 0) {
+  <p class="text-muted">Nenhuma tarefa cadastrado.</p>
+} @else {
+  <ul class="list-group" style="max-width:620px">
+    @for (l of livros; track l.id) {
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <strong>{{ l.titulo }}</strong>
+          <small class="text-muted d-block">
+            {{ l.autor }} — {{ l.ano }} @if (l.genero) { • {{ l.genero }} }
+          </small>
+        </div>
+        <button class="btn btn-outline-danger btn-sm" (click)="remover(l.id)">Remover</button>
+      </li>
+    }
+  </ul>
+}
